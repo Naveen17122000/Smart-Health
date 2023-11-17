@@ -1,0 +1,117 @@
+{% load static %}
+<html>
+<head>
+<title>SSMART HEALTH CONSULTING ONLINE SYSTEM USING BLOCKCHAIN</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+<script language="javascript">
+	function validate(formObj)
+	{
+	if(formObj.t1.value.length==0)
+	{
+	alert("Please Enter patient name");
+	formObj.t1.focus();
+	return false;
+	}
+	if(formObj.t2.value.length==0)
+	{
+	alert("Please Enter Age");
+	formObj.t2.focus();
+	return false;
+	}
+	if(isNaN(formObj.t2.value)){
+		alert("Age  must be numeric");
+		formObj.t2.focus();
+		return false;
+	}
+	if(formObj.t3.value.length==0)
+	{
+	alert("Please Enter Problem Description");
+	formObj.t3.focus();
+	return false;
+	}
+	
+	
+	if(formObj.t6.value.length==0)
+	{
+	alert("Please Enter Contact No");
+	formObj.t6.focus();
+	return false;
+	}
+	if(isNaN(formObj.t6.value)){
+		alert("Contact No must be numeric");
+		formObj.t6.focus();
+		return false;
+	}
+	if(formObj.t7.value.length==0)
+	{
+	alert("Please Enter Address");
+	formObj.t7.focus();
+	return false;
+	}
+	formObj.actionUpdateData.value="update";
+	return true;
+	}
+	</script>
+	 <script language="javascript" type="text/javascript" src="datetimepicker.js">
+</script>
+</head>
+<body >
+<div class="main" >
+  <div class="main_resize">
+    <div class="header">
+      <div class="logo">
+        <h1><span>SMART HEALTH CONSULTING ONLINE SYSTEM USING BLOCKCHAIN</span><small></small></h1>
+      </div>
+    </div>
+    <div class="content" >
+      <div class="content_bg" >
+        <div class="menu_nav">
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'Hospital' %}">Hospital</a></li>
+      <li><a href="{% url 'Patient' %}">Patients Login</a></li>
+      <li><a href="{% url 'CreateProfile' %}">New Patient Register Here</a></li>
+          </ul>
+        </div>
+        
+      				<center>
+<form name="f1" method="post" action={% url 'CreateProfileData' %} onsubmit="return validate(this);">
+{% csrf_token %}<br/>
+   <h2><b>Patients Profile Creation Screen</b></h2>
+   
+	<font size="" color="red"><center>{{ data }}</center></font>
+						
+						<table align="center" width="30%" >
+			 <tr><td><b>Patient&nbsp;Name</b></td>
+			 <td><input type="text" name="t1" style="font-family: Comic Sans MS" size="30" pattern="[A-Za-z]{1,32}" title="name contains charaters only"></td></tr>
+         
+		  <tr><td><b>Age</b></td><td><input name="t2" type="Text" size="30" pattern="[0-9]{2}" title="Age contains digits only"></td></tr>
+
+			<tr><td><b>Problem&nbsp;Desc</b></td>
+			<td><textarea name="t3" rows="10" cols="30"></textarea></td></tr>
+
+		   <tr><td><b>Access Control</b></td><td><select name="t4" multiple>
+		   <option value="Hospital1">Hospital 1</option>
+		   <option value="Hospital2">Hospital 2</option>
+		   </select>
+		   </td></tr>
+
+		   <tr><td><b>Gender</b></td><td><select name="t5" style="font-family: Comic Sans MS">
+		   <option value="Male">Male</option>
+		   <option value="Female">Female</option>
+		   </select>
+		   </td></tr>
+
+		   <tr><td><b>Contact&nbsp;No</b></td><td><input type="text" pattern="(9|8|7)\d{9}" name="t6" style="font-family: Comic Sans MS" size=30/></td></tr>
+
+          <tr><td><b>address</b></td><td><textarea name="t7" style="font-family: Comic Sans MS" rows="6" cols="30"></textarea></td></tr>
+			<tr><td></td><td><input type="submit" value="Create"></td>
+			</table>
+				</div>	
+					
+				</div>
+				
+					
+	</body>
+</html>
